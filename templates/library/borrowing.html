@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Manage Borrowings</div>
+    <div class="card-body">
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Borrow Book</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Book</th>
+                    <th>Borrow Date</th>
+                    <th>Due Date</th>
+                    <th>Fine</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for borrowing in borrowings %}
+                <tr>
+                    <td>{{ borrowing.book_copy.book.title }}</td>
+                    <td>{{ borrowing.borrow_date }}</td>
+                    <td>{{ borrowing.due_date }}</td>
+                    <td>{{ borrowing.fine }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

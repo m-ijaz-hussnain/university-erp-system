@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Student Report</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Enrollment Number</th>
+                    <th>Department</th>
+                    <th>Batch</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.user.username }}</td>
+                    <td>{{ student.enrollment_number }}</td>
+                    <td>{{ student.department.name }}</td>
+                    <td>{{ student.batch.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Faculty Report</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Employee ID</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for faculty in faculty %}
+                <tr>
+                    <td>{{ faculty.user.username }}</td>
+                    <td>{{ faculty.employee_id }}</td>
+                    <td>{{ faculty.department.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

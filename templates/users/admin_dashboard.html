@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Admin Dashboard</div>
+    <div class="card-body">
+        <h5>Welcome, {{ user.username }}</h5>
+        <p>Manage university resources below:</p>
+        <a href="{% url 'manage_departments' %}" class="btn btn-primary">Manage Departments</a>
+        <a href="{% url 'manage_courses' %}" class="btn btn-primary">Manage Courses</a>
+        <a href="{% url 'manage_batches' %}" class="btn btn-primary">Manage Batches</a>
+        <a href="{% url 'manage_schedules' %}" class="btn btn-primary">Manage Schedules</a>
+        <a href="{% url 'manage_fees' %}" class="btn btn-primary">Manage Fees</a>
+    </div>
+</div>
+{% endblock %}

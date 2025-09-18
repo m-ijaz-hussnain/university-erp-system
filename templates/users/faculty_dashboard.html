@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Faculty Dashboard</div>
+    <div class="card-body">
+        <h5>Welcome, {{ profile.user.username }}</h5>
+        <p>Employee ID: {{ profile.employee_id }}</p>
+        <p>Department: {{ profile.department.name }}</p>
+        <a href="{% url 'mark_attendance' %}" class="btn btn-info">Mark Attendance</a>
+        <a href="{% url 'assign_grades' %}" class="btn btn-info">Assign Grades</a>
+        <a href="{% url 'faculty_profile' %}" class="btn btn-info">Edit Profile</a>
+    </div>
+</div>
+{% endblock %}

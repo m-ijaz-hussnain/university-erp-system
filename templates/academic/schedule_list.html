@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Manage Course Schedules</div>
+    <div class="card-body">
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Add Schedule</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Faculty</th>
+                    <th>Semester</th>
+                    <th>Timings</th>
+                    <th>Classroom</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in schedules %}
+                <tr>
+                    <td>{{ schedule.course.name }}</td>
+                    <td>{{ schedule.faculty.user.username }}</td>
+                    <td>{{ schedule.semester }}</td>
+                    <td>{{ schedule.timings }}</td>
+                    <td>{{ schedule.classroom }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">Student Dashboard</div>
+    <div class="card-body">
+        <h5 class="card-title">Welcome, {{ profile.user.username }}</h5>
+        <p><strong>Enrollment Number:</strong> {{ profile.enrollment_number|default:'Not set' }}</p>
+        {% if department %}
+            <p><strong>Department:</strong> {{ department.name|default:'Not assigned' }}</p>
+        {% else %}
+            <p><strong>Department:</strong> Not assigned</p>
+        {% endif %}
+
+        <h6>Courses</h6>
+        {% if courses %}
+            <ul>
+            {% for course in courses %}
+                <li>{{ course.code|default:'N/A' }} - {{ course.name|default:'N/A' }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No courses enrolled.</p>
+        {% endif %}
+
+        <h6>Grades</h6>
+        {% if grades %}
+            <ul>
+            {% for grade in grades %}
+                <li>{{ grade.course.code|default:'N/A' }}: {{ grade.grade|default:'N/A' }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No grades available.</p>
+        {% endif %}
+
+        <h6>Attendance</h6>
+        {% if attendance %}
+            <ul>
+            {% for record in attendance %}
+                <li>{{ record.course.code|default:'N/A' }} - {{ record.date|date:"F d, Y"|default:'N/A' }}: {{ record.status|default:'N/A' }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No attendance records.</p>
+        {% endif %}
+
+        <h6>Student Fees</h6>
+        {% if student_fees %}
+            <ul>
+            {% for fee in student_fees %}
+                <li>{{ fee.fee_structure.program|default:'N/A' }}: {{ fee.amount_paid|default:'N/A' }} (Due: {{ fee.due_date|date:"F d, Y"|default:'N/A' }})</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No fees recorded.</p>
+        {% endif %}
+
+        <h6>Borrowed Books</h6>
+        {% if borrowed_books %}
+            <ul>
+            {% for borrowing in borrowed_books %}
+                <li>{{ borrowing.book_copy.book.title|default:'N/A' }} (Due: {{ borrowing.due_date|date:"F d, Y"|default:'N/A' }})</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books borrowed.</p>
+        {% endif %}
+
+        {% if error %}
+            <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
