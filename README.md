@@ -150,6 +150,18 @@ docker-compose up --build
 
 ---
 
+## 📎 Resources
+
+- 📊 Pages ScreenShort:
+![Home Page Screenshot](pages-ss/home.PNG)
+
+![Registration Page Screenshot](pages-ss/registration.PNG)
+
+![Admin Dashboard Page Screenshot](pages-ss/admin1.PNG)
+![Admin Dashboard Page Screenshot](pages-ss/admin2.PNG)
+
+---
+
 ## ✅ Contributing
 
 Contributions are welcome!
